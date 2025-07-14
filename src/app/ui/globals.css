@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fcfcfc;
+  --foreground: rgb(26, 27, 28);
+  --bluish: #A0A4AB;
+  --transition-duration: .3s;
+  --grayish: #b3b3b34d;
+}
+
+::selection {
+  background-color: var(--grayish);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-bluish: var(--bluish);
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-button__icon::before, .main-button__icon::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: all .5s cubic-bezier(.08,.5,.44,.96);
+}
+
+.main-button__icon::before {
+  border: 1px solid var(--foreground);
+}
+
+.main-button__icon::after {
+  border: 1px dotted var(--foreground);
+}
+
+.rectangle::before, .rectangle::after {
+  content: '';
+  position: absolute;
+  display: block;
+  inset: 0;
+  border: inherit;
+  pointer-events: none;
+}
+
+.rectangle::before {
+  opacity: 0;
+  transition: all var(--transition-duration) cubic-bezier(.08,.5,.44,.96);
+  transition-delay: calc(var(--transition-duration)/2);
+}
+
+.rectangle::after {
+  transform: scale(1.1);
+  opacity: 0;
+  transition: transform var(--transition-duration) cubic-bezier(.08,.5,.44,.96) calc(var(--transition-duration)/2), 
+    opacity var(--transition-duration) cubic-bezier(.08,.5,.44,.96) ;
+}
+
+.main-button:hover + .rectangle::before {
+  transform: scale(1.1);
+  opacity: 0.6;
+  transition-delay: 0s;
+}
+
+.main-button:hover + .rectangle::after {
+  transform: scale(1.2);
+  opacity: .3;
+}
