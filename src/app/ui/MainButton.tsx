@@ -1,5 +1,5 @@
 
-export default function MainButton({ right, title, id, className }: { right?: boolean, title: string, id: string, className: string }) {
+export default function MainButton({ right, title, id, className }: { right?: boolean, title: string, id?: string, className: string }) {
   return (
     <button
       id={id}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/ui/globals.css";
-import { Roobert } from '@/app/ui/fonts/font'
-
+import { Roobert } from "@/app/ui/fonts/font";
+import Nav from "./ui/Nav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,10 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${Roobert.className} antialiased`}
-      >
-        {children}
+      <body className={`${Roobert.className} antialiased`}>
+        <main className="relative h-screen overflow-hidden">
+          <Nav />
+          {children}
+        </main>
       </body>
     </html>
   );

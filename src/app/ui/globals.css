@@ -74,3 +74,15 @@ body {
   transform: scale(1.2);
   opacity: .3;
 }
+
+.an-rotate-slow {
+  animation: spin 480s linear infinite;
+}
+
+.an-rotate-mid {
+  animation: spin 240s linear infinite;
+}
+
+.an-rotate-fast {
+  animation: spin 120s linear infinite;
+}
