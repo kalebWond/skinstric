@@ -64,13 +64,13 @@ body {
     opacity var(--transition-duration) cubic-bezier(.08,.5,.44,.96) ;
 }
 
-.main-button:hover + .rectangle::before {
+.main-btn-link:hover + .rectangle::before {
   transform: scale(1.1);
   opacity: 0.6;
   transition-delay: 0s;
 }
 
-.main-button:hover + .rectangle::after {
+.main-btn-link:hover + .rectangle::after {
   transform: scale(1.2);
   opacity: .3;
 }
@@ -85,4 +85,34 @@ body {
 
 .an-rotate-fast {
   animation: spin 120s linear infinite;
+}
+
+.an-bounce {
+  animation: bouncee 1s cubic-bezier(0.42, 0, 0.5, 0.62) infinite;
+}
+
+.an-delay-small {
+  animation-delay: 150ms;
+}
+
+.an-delay-mid {
+  animation-delay: 200ms;
+}
+
+.an-delay-large {
+  animation-delay: 800ms;
+} 
+
+@keyframes bouncee {
+  0% {
+    transform: translateY(5px);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(5px);
+  }
 }

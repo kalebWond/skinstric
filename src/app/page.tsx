@@ -11,11 +11,11 @@ export default function Home() {
         <span className="block transition-transform">skincare</span>
       </h1>
       <div className="">
-        <MainButton id="discover-btn" title="DISCOVER A.I." className="left-8 translate-x-1/5 xl:translate-x-1/12 [@media(width>=1920px)]:translate-x-1/20"/>
+        <Link href="/" className="main-btn-link"><MainButton id="discover-btn" title="DISCOVER A.I." className="left-8 translate-x-1/5 xl:translate-x-1/12 [@media(width>=1920px)]:translate-x-1/20"/></Link>
         <Rectangle className="left-[-15%] rectangle" />
       </div>
       <div className="">
-        <Link href="/testing"><MainButton id="take-test-btn" title="TAKE TEST" right className="right-8 -translate-x-1/5 xl:-translate-x-1/12 [@media(width>=1920px)]:-translate-x-1/20" /></Link>
+        <Link href="/testing" className="main-btn-link"><MainButton id="take-test-btn" title="TAKE TEST" right className="right-8 -translate-x-1/5 xl:-translate-x-1/12 [@media(width>=1920px)]:-translate-x-1/20" /></Link>
         <Rectangle className="right-[-15%] rectangle" />
       </div>
       

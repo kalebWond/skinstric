@@ -1,7 +1,7 @@
 
 export default function MainButton({ right, title, id, className }: { right?: boolean, title: string, id?: string, className: string }) {
   return (
-    <button
+    <div
       id={id}
       className={`main-button group inline-flex ${right ? 'flex-row-reverse' : 'flex-row'} items-center justify-center gap-4 whitespace-nowrap rounded-md font-normal text-[#1A1B1C] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 -translate-y-1/2 px-3 py-1 ` + className}
     >
@@ -11,6 +11,6 @@ export default function MainButton({ right, title, id, className }: { right?: bo
             </svg>
         </span>
       <span className={`uppercase text-[10px] leading-4 ${right ? 'group-hover:-translate-x-8 group-focus:-translate-x-8' : 'group-hover:translate-x-8 group-focus:translate-x-8'} transition-all duration-500 ease-[cubic-bezier(.08,.5,.44,.96)]`}>{title}</span>
-    </button>
+    </div>
   );
 }
