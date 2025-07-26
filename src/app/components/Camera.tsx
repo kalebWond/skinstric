@@ -1,4 +1,4 @@
-import DottedRectangle from "./DottedRectangle";
+import DottedRectangle from "../ui/DottedRectangle";
 
 export default function Camera() {
     return (
@@ -25,9 +25,10 @@ export default function Camera() {
             </div>
 
             {/* Rectangles */}
-            <DottedRectangle width={300} opacity="100" className="rotate-30 an-rotate-slow" />
-            <DottedRectangle width={350} opacity="60" className="rotate-30 an-rotate-mid" />
-            <DottedRectangle width={400} opacity="30" className="rotate-30 an-rotate-fast" />
+            
+            <DottedRectangle width={300} opacity={1} className="rotate-30 an-rotate-slow" />
+            <DottedRectangle width={360} opacity={.6} className="rotate-30 an-rotate-mid" />
+            <DottedRectangle width={420} opacity={.3} className="rotate-30 an-rotate-fast" />
         </div>
     )
 }

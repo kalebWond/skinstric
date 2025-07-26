@@ -6,7 +6,7 @@ export default function DottedRectangle({
 }: {
   width: number;
   height?: number;
-  opacity: string;
+  opacity: number;
   className?: string;
 }) {
   return (
@@ -14,8 +14,9 @@ export default function DottedRectangle({
       style={{
         width: `${width}px`,
         height: `${height ?? width}px`,
+        opacity
       }}
-      className={`absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-${opacity} ${className}`}
+      className={`absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${className}`}
       viewBox="0 0 604 604"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

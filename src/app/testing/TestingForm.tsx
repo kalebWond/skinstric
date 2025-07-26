@@ -3,10 +3,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { z } from 'zod';
-import { API_PHASE_ONE, STORAGE_KEY } from "../utils";
+import { API_PHASE_ONE, STORAGE_KEY_REGISTERED } from "../utils";
 import MainButton from "../ui/MainButton";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import DottedRectangle from "../ui/DottedRectangle";
 
 const nameSchema = z.string().min(1, 'Name is required').regex(/^[A-Za-z\s]+$/, "Name must only contain letters");
 const locationSchema = z.string().min(1, 'Location is required').regex(/^[A-Za-z\s]+$/, "Name must only contain letters");
@@ -47,7 +48,7 @@ export default function TestingForm() {
         setStep(3);
         await axios.post(API_PHASE_ONE, { name, location });
         setSuccess(true);
-        Cookies.set(STORAGE_KEY, JSON.stringify({name, location}), {expires: 7});
+        Cookies.set(STORAGE_KEY_REGISTERED, JSON.stringify({name, location}), {expires: 7});
         // Optionally reset or navigate
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (e) {
@@ -124,7 +125,10 @@ export default function TestingForm() {
           <p className="text-lg text-gray-600">Proceed for the next step</p>
         </div>
       )}
-      <svg
+      <DottedRectangle width={550} opacity={.7} className="an-rotate-fast" />
+      <DottedRectangle width={610} opacity={.5} className="an-rotate-mid" />
+      <DottedRectangle width={670} opacity={.2} className="an-rotate-slow" />
+      {/* <svg
         className="absolute -z-1 top-2/3 left-1/2 -translate-1/2 w-[600px] h-[600px] rotate-45 an-rotate-fast"
         viewBox="0 0 604 604"
         fill="none"
@@ -168,7 +172,7 @@ export default function TestingForm() {
           strokeLinejoin="round"
           strokeDasharray="0.1 8"
         />
-      </svg>
+      </svg> */}
 
       {success && (
         <div onClick={onProceedHandler} className="fixed bottom-12 right-40">

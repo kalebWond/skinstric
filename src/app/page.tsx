@@ -4,7 +4,7 @@ import Rectangle from "./ui/Reactangle";
 
 export default function Home() {
   return (
-    <>
+    <section className="relative h-screen overflow-hidden">
       {/* -translate-x-[110%], -translate-x-24, translate-x-[10%] */}
       <h1 className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-7xl font-normal tracking-[-0.1em] text-center transition-all duration-300">
         Sophisticated
@@ -22,6 +22,6 @@ export default function Home() {
       <div className="hidden lg:block fixed bottom-5 left-8 font-normal text-sm text-[#1A1B1C] space-y-3 uppercase">
         <p>Skinstric developed an A.I. that creates a<br/>highly-personalized routine tailored to<br/>what your skin needs.</p>
       </div>
-    </>
+    </section>
   );
 }

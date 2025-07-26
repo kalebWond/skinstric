@@ -2,10 +2,11 @@
 
 :root {
   --background: #fcfcfc;
-  --foreground: rgb(26, 27, 28);
+  --foreground: #1a1b1c;
   --bluish: #A0A4AB;
   --transition-duration: .3s;
-  --grayish: #b3b3b34d;
+  --grayish: #E1E1E2;
+  --pale: #f3f3f4;
 }
 
 ::selection {
@@ -16,8 +17,24 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-bluish: var(--bluish);
+  --color-pale: var(--pale);
+  --color-grayish: var(--grayish);
 }
 
+html::-webkit-scrollbar {
+    background-color: #1a1b1c03;
+    height: 6px;
+    width: 6px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #1a1b1c;
+    border-radius: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background: var(--background);
