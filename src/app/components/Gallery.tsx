@@ -5,8 +5,9 @@ import axios from "axios";
 import { API_PHASE_TWO, STORAGE_KEY_DEMOGRAPHIC } from "../utils";
 import Modal from "./modal";
 import { useRouter } from 'next/navigation';
+import clsx from "clsx";
 
-export default function Gallery() {
+export default function Gallery({disabled}: {disabled: boolean}) {
     const router = useRouter();
     const [uploading, setUploading] = useState<boolean>(false)
 
@@ -43,8 +44,11 @@ export default function Gallery() {
   };
 
   return (
-    <div className="relative p-5 group">
-      <label htmlFor="file-gallery" className="flex justify-center">
+    <>
+    <div className={clsx("relative p-5 group transition-opacity duration-300", {
+      "opacity-40 pointer-events-none": disabled
+    })}>
+      <label aria-disabled htmlFor="file-gallery" className="flex justify-center">
         <svg
           className="group-hover:scale-80 transition duration-500 cursor-pointer"
           width="136"
@@ -80,6 +84,7 @@ export default function Gallery() {
         accept="image/*"
         onChange={handleFileChange}
         className="hidden opacity-0"
+        disabled={disabled}
       />
 
       <div className="absolute bottom-0 right-[78%] group-hover:translate-x-[30%] group-hover:scale-90 transition duration-500 z-0">
@@ -108,7 +113,8 @@ export default function Gallery() {
       <DottedRectangle width={360} opacity={.6} className="rotate-30 an-rotate-mid" />
       <DottedRectangle width={420} opacity={.3} className="rotate-30 an-rotate-fast" />
       
-      {/* MODAL */}
+    </div>
+    {/* MODAL */}
       { uploading && (
         <Modal>
           <p className="text-base text-foreground font-semibold uppercase animate-pulses">
@@ -119,6 +125,6 @@ export default function Gallery() {
           <DottedRectangle width={560} opacity={.3} className="rotate-20 an-rotate-slow" />
         </Modal>
       ) }
-    </div>
+    </>
   );
 }

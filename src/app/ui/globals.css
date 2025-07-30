@@ -59,6 +59,15 @@ body {
   border: 1px dotted var(--foreground);
 }
 
+.main-button__icon.white-borders::before {
+  border: 1px solid var(--background);
+}
+
+.main-button__icon.white-borders::after {
+  border: 1px dotted var(--background);
+}
+
+
 .rectangle::before, .rectangle::after {
   content: '';
   position: absolute;
