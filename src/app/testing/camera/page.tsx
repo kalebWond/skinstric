@@ -19,14 +19,14 @@ export default function Page() {
 
   useEffect(() => {
     let stream: MediaStream;
-    const video = videoRef.current;
+
     async function initCamera() {
       try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
-        setAllowed(true);
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'user' },
+          audio: false,
+        });
+        setAllowed(true); // This will trigger re-render and mount the video
       } catch (err) {
         console.error("Error accessing camera:", err);
       }
@@ -38,11 +38,28 @@ export default function Page() {
       if (stream) {
         stream.getTracks().forEach((track) => track.stop());
       }
-      if (video) {
-        video.srcObject = null
-      }
     };
   }, []);
+
+  useEffect(() => {
+    if (allowed && videoRef.current) {
+      const video = videoRef.current;
+      const stream = video.srcObject as MediaStream;
+
+      if (!stream) {
+        navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'user' },
+          audio: false,
+        }).then((stream) => {
+          video.srcObject = stream;
+          video.onloadedmetadata = () => {
+            video.play();
+          };
+        });
+      }
+    }
+  }, [allowed]);
+
 
   const handleCapture = () => {
     const video = videoRef.current;
