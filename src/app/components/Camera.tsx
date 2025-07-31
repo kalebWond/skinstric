@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { motion, AnimatePresence } from 'motion/react'
 import DottedRectangle from "../ui/DottedRectangle";
 
 type Tprops = {
@@ -40,7 +40,25 @@ export default function Camera({isModalOpen, toggleModal, onAllowClicked}: Tprop
             <DottedRectangle width={420} opacity={.3} className="rotate-30 an-rotate-fast" />
 
             {/* PERMISSION MODAL */}
-            <div className={clsx("absolute top-0 left-full translate-y-1/2 bg-foreground text-background text-sm font-semibold transition-opacity duration-300", {
+            <AnimatePresence>
+                {isModalOpen && (
+                    <motion.div
+                    key="modal"
+                    initial={{ clipPath: 'inset(50% 0% 50% 0%)' }}
+                    animate={{ clipPath: 'inset(0%)' }}
+                    exit={{ clipPath: 'inset(50% 0% 50% 0%)'  }}
+                    transition={{ ease: 'easeInOut', duration: 0.2}}
+                    className="absolute top-0 left-full translate-y-1/2 bg-foreground text-background text-sm font-semibold transition-opacity duration-300"
+                    >
+                        <p className="px-4 pt-3.5 mb-16 uppercase text-nowrap">Allow A.I. to access your camera</p>
+                        <div className="flex justify-end gap-4 border-t">
+                            <button onClick={toggleModal} className="px-4 py-2.5 opacity-70 cursor-pointer active:translate-y-0.5 transition-transform">DENY</button>
+                            <button onClick={onAllowClicked} className="px-4 py-2.5 cursor-pointer active:translate-y-0.5 transition-transform">ALLOW</button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            {/* <div className={clsx("absolute top-0 left-full translate-y-1/2 bg-foreground text-background text-sm font-semibold transition-opacity duration-300", {
                 "invisible opacity-0 left-[-320%]": !isModalOpen,
             })}>
                 <p className="px-4 pt-3.5 mb-16 uppercase text-nowrap">Allow A.I. to access your camera</p>
@@ -48,7 +66,7 @@ export default function Camera({isModalOpen, toggleModal, onAllowClicked}: Tprop
                     <button onClick={toggleModal} className="px-4 py-2.5 opacity-70 cursor-pointer active:translate-y-0.5 transition-transform">DENY</button>
                     <button onClick={onAllowClicked} className="px-4 py-2.5 cursor-pointer active:translate-y-0.5 transition-transform">ALLOW</button>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -7,6 +7,7 @@ import ProgressFill from "../ui/ProgressFill";
 import { getTopPredictions, STORAGE_KEY_DEMOGRAPHIC, TPrediction } from "../utils";
 import Link from "next/link";
 import MainButton from "../ui/MainButton";
+import { motion } from 'motion/react';
 
 type AiCategory = "race" | "age" | "gender";
 
@@ -51,21 +52,50 @@ export default function DemographicSummary() {
         {predictions && Object.entries(predictions).map(item => {
           const [category, value] = item as [AiCategory, string];
           return (
-            <div key={category}
-                  onClick={() => onCategorySelect(category)}
-                  className={clsx("px-4 py-3 text-sm font-semibold tracking-tight border-t border-foreground cursor-pointer", {
-                    "text-background bg-foreground": selectedCategory === category,
-                    "bg-pale hover:bg-grayish": selectedCategory !== category,
-                  })}
-                >
-                  <p className="mb-8">{value}</p>
-                  <p className="">{category === 'gender' ? 'sex' : category}</p>
-                </div>
+            <motion.div
+              initial={{ clipPath: 'inset(0% 100% 99% 0%)' }}
+              animate={{
+                clipPath: [
+                  'inset(0% 100% 99% 0%)', // start: fully hidden (right + bottom)
+                  'inset(0% 0% 99% 0%)',   // step 1: reveal horizontally
+                  'inset(0% 0% 0% 0%)',     // step 2: reveal vertically
+                ]
+              }}
+              transition={{
+                duration: 1.2,
+                ease: 'easeInOut',
+                times: [0, 0.5, 1], // each step takes equal time
+                delay: 0.4
+              }} 
+              key={category}
+              onClick={() => onCategorySelect(category)}
+              className={clsx("px-4 py-3 text-sm font-semibold tracking-tight border-t border-foreground cursor-pointer", {
+                "text-background bg-foreground": selectedCategory === category,
+                "bg-pale hover:bg-grayish": selectedCategory !== category,
+              })}
+            >
+              <p className="mb-8">{value}</p>
+              <p className="">{category === 'gender' ? 'sex' : category}</p>
+            </motion.div>
           );
         })}
       </div>
       {/* PERCENTAGE */}
-      <div className={clsx("flex flex-col bg-pale px-4 py-5 border-foreground", { "animate-pulse": !data, "border-t": data })}>
+      <motion.div
+        initial={{ clipPath: 'inset(0% 100% 99% 0%)' }}
+        animate={{
+          clipPath: [
+            'inset(0% 100% 99% 0%)', // start: fully hidden (right + bottom)
+            'inset(0% 0% 99% 0%)',   // step 1: reveal horizontally
+            'inset(0% 0% 0% 0%)',     // step 2: reveal vertically
+          ]
+        }}
+        transition={{
+          duration: 1.2,
+          ease: 'easeInOut',
+          times: [0, 0.5, 1], // each step takes equal time
+        }} 
+        className={clsx("flex flex-col bg-pale px-4 py-5 border-foreground", { "animate-pulse": !data, "border-t": data })}>
           {predictions && data && (
             <>
               <h3 className="text-[40px] leading-[40px] tracking-tighter capitalize">
@@ -77,9 +107,24 @@ export default function DemographicSummary() {
             </div>
             </>
           )}
-      </div>
+      </motion.div>
       {/* ESTIMATE DETAILS */}
-      <div className={clsx("bg-pale text-foreground border-foreground pb-4", {
+      <motion.div
+        initial={{ clipPath: 'inset(0% 100% 99% 0%)' }}
+        animate={{
+          clipPath: [
+            'inset(0% 100% 99% 0%)', // start: fully hidden (right + bottom)
+            'inset(0% 0% 99% 0%)',   // step 1: reveal horizontally
+            'inset(0% 0% 0% 0%)',     // step 2: reveal vertically
+          ]
+        }}
+        transition={{
+          duration: 1.2,
+          ease: 'easeInOut',
+          times: [0, 0.5, 1], // each step takes equal time
+          delay: 0.2
+        }} 
+        className={clsx("bg-pale text-foreground border-foreground pb-4", {
         "animate-pulse": !data,
         "border-t": data
         })}>
@@ -105,16 +150,26 @@ export default function DemographicSummary() {
             </div>
           )
         ) }
-      </div>
+      </motion.div>
       <div className="fixed bottom-0 left-0 px-8 pb-6 w-full flex justify-between items-end bg-background">
         <Link href="/testing" className="">
           <MainButton title="Back" className="" />
         </Link>
-        <p className="text-bluish">If A.I. estimate is wrong, select the correct one.</p>
-        <div className="flex gap-2">
+        <motion.p 
+          initial={{y: 10, opacity: 0}}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ease:'easeInOut', duration: 0.6}}
+          className="text-bluish">
+            If A.I. estimate is wrong, select the correct one.
+          </motion.p>
+        <motion.div 
+          initial={{y: 10, opacity: 0}}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ease:'easeInOut', duration: 0.6}}
+          className="flex gap-2">
           <button className="text-xs px-4 py-2.5 border border-foreground cursor-pointer">RESET</button>
           <button className="text-xs px-4 py-2.5 border bg-foreground text-background cursor-pointer">CONFIRM</button>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

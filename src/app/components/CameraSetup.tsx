@@ -1,10 +1,18 @@
+"use client";
+
+import { motion } from 'motion/react'
 import DottedRectangle from "../ui/DottedRectangle";
 import PictureInstruction from "./PictureInstruction";
 
 export default function CameraSetup() {
   return (
-    <div className="h-full flex flex-col justify-center items-center">
-    <div className="relative flex flex-col items-center mt-32">
+    <div
+      className="h-full flex flex-col justify-center items-center">
+      <motion.div
+        initial={{opacity: 0, x: -80}}
+        animate={{opacity: 1, x: 0}}
+        transition={{ease: "easeInOut", duration: 0.6, type: 'spring'}}
+        className="relative flex flex-col items-center mt-32">
         <svg style={{animationDuration: "15s"}} className="an-rotate-fast" width="136" height="136" viewBox="0 0 136 136" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="67.9996" cy="67.9997" r="57.7857" stroke="#1A1B1C"/>
           <circle cx="68" cy="68" r="51" fill="#1A1B1C"/>
@@ -14,14 +22,14 @@ export default function CameraSetup() {
           <path d="M76.9643 113.273C74.0646 113.843 71.0674 114.143 68.0003 114.143C54.1917 114.143 41.7998 108.077 33.3436 98.465C35.1707 94.4055 39.9295 85.9319 48.1717 72.0115C48.9468 70.7014 49.7323 69.781 49.917 69.966C50.1016 70.1503 56.6037 80.5196 64.3671 93.0077L76.9643 113.273Z" fill="#FCFCFC"/>
           <path d="M111.529 83.348C106.372 97.9733 94.0533 109.22 78.7841 112.876C74.5785 106.389 60.6125 83.9565 60.6125 83.6094C60.6125 83.4658 72.6814 83.348 87.4326 83.348H111.529Z" fill="#FCFCFC"/>
           <path d="M101.902 36.6966C109.5 44.922 114.143 55.9187 114.143 67.9998C114.143 72.923 113.372 77.6662 111.944 82.115H96.5965C86.6243 82.115 78.4651 81.9646 78.4651 81.7803C78.4651 81.3997 98.4368 43.0157 101.902 36.6966Z" fill="#FCFCFC"/>
-          </svg>
-          <p className="text-center mt-2 font-semibold uppercase tracking-tight">Setting up camera ...</p>
+        </svg>
+        <p className="text-center mt-2 font-semibold uppercase tracking-tight">Setting up camera ...</p>
 
          {/* Rectangles */}
         <DottedRectangle width={360} opacity={1} className="rotate-30 an-rotate-slow" />
         <DottedRectangle width={420} opacity={.6} className="rotate-30 an-rotate-mid" />
         <DottedRectangle width={480} opacity={.3} className="rotate-30 an-rotate-fast" />
-      </div>
+      </motion.div>
 
       <PictureInstruction className="mt-32" strokeColor="#1a1b1c"/>
       </div>

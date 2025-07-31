@@ -1,5 +1,12 @@
+'use client'
+import { motion } from 'motion/react';
+
 export default function PictureInstruction({className, strokeColor}: {className: string, strokeColor: string}) {
-  return (<div className={`flex flex-col items-center text-sm ` + className}>
+  return (<motion.div
+            initial={{opacity: 0, y: 10}}
+            animate={{opacity: 1, y: 0}}
+            transition={{ease: "easeInOut", duration: 0.6, type: 'spring'}}
+           className={`flex flex-col items-center text-sm ` + className}>
             <p className="uppercase">To get better results make sure to have</p>
             <div className="flex mt-4 gap-8 uppercase">
               <p className="flex items-center gap-1">
@@ -21,6 +28,6 @@ export default function PictureInstruction({className, strokeColor}: {className:
                 <span className="">Adequate Lighting</span>
               </p>
             </div>
-          </div>
+          </motion.div>
           )
 }

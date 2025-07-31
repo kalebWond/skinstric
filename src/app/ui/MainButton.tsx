@@ -1,7 +1,12 @@
+'use client';
+import { motion } from 'motion/react'
 
 export default function MainButton({ right, title, id, className, strokeColor }: { right?: boolean, title: string, id?: string, className: string, strokeColor?: string }) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0.6, clipPath: 'inset(0% 50% 0% 50%)' }}
+      animate={{ opacity: 1, clipPath: 'inset(-100%)'}}
+      transition={{ type: 'tween', duration: 1, ease: 'easeInOut', delay: 0.6 }}
       id={id}
       className={`main-button group inline-flex ${right ? 'flex-row-reverse' : 'flex-row'} items-center justify-center gap-4 whitespace-nowrap rounded-md font-semibold text-[#1A1B1C] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 -translate-y-1/2 px-3 py-1 ` + className}
     >
@@ -11,6 +16,6 @@ export default function MainButton({ right, title, id, className, strokeColor }:
             </svg>
         </span>
       <span className={`uppercase text-[12px] leading-4 ${right ? 'group-hover:-translate-x-8 group-focus:-translate-x-8' : 'group-hover:translate-x-8 group-focus:translate-x-8'} transition-all duration-500 ease-[cubic-bezier(.08,.5,.44,.96)]`}>{title}</span>
-    </div>
+    </motion.div>
   );
 }

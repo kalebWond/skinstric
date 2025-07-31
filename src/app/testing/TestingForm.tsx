@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import axios from "axios";
 import { z } from 'zod';
-import { API_PHASE_ONE, STORAGE_KEY_REGISTERED } from "../utils";
-import MainButton from "../ui/MainButton";
+import axios from "axios";
 import Cookies from "js-cookie";
+import { useState } from "react";
+import { motion } from 'motion/react';
+import MainButton from "../ui/MainButton";
 import { useRouter } from "next/navigation";
-import DottedRectangle from "../ui/DottedRectangle";
+import { API_PHASE_ONE, STORAGE_KEY_REGISTERED } from "../utils";
 
 const nameSchema = z.string().min(1, 'Name is required').regex(/^[A-Za-z\s]+$/, "Name must only contain letters");
 const locationSchema = z.string().min(1, 'Location is required').regex(/^[A-Za-z\s]+$/, "Name must only contain letters");
@@ -66,7 +66,11 @@ export default function TestingForm() {
   };
 
   return (
-    <div className="relative flex flex-col items-center">
+    <motion.div 
+      initial={{ opacity: 0, y: 70 }}
+      animate={{ opacity: 1, y: 0}}
+      transition={{ duration: 1, type: 'spring' }}
+      className="relative flex flex-col items-center">
       {step === 1 && (
         <>
           <label htmlFor="name" className="uppercase text-sm text-gray-400">
@@ -125,10 +129,10 @@ export default function TestingForm() {
           <p className="text-lg text-gray-600">Proceed for the next step</p>
         </div>
       )}
-      <DottedRectangle width={550} opacity={.7} className="an-rotate-fast" />
+      {/* <DottedRectangle width={550} opacity={.7} className="an-rotate-fast" />
       <DottedRectangle width={610} opacity={.5} className="an-rotate-mid" />
-      <DottedRectangle width={670} opacity={.2} className="an-rotate-slow" />
-      {/* <svg
+      <DottedRectangle width={670} opacity={.2} className="an-rotate-slow" /> */}
+      <svg
         className="absolute -z-1 top-2/3 left-1/2 -translate-1/2 w-[600px] h-[600px] rotate-45 an-rotate-fast"
         viewBox="0 0 604 604"
         fill="none"
@@ -172,13 +176,13 @@ export default function TestingForm() {
           strokeLinejoin="round"
           strokeDasharray="0.1 8"
         />
-      </svg> */}
+      </svg>
 
       {success && (
         <div onClick={onProceedHandler} className="fixed bottom-12 right-40">
           <MainButton title="Proceed" className="" right/>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

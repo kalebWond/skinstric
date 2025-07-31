@@ -67,6 +67,15 @@ body {
   border: 1px dotted var(--background);
 }
 
+.rectangle {
+  position: absolute;
+  width: 384px;
+  height: 384px;
+  top: 20%;
+  rotate: 45deg;
+  border: 2px dotted var(--bluish);
+  z-index: -1;
+}
 
 .rectangle::before, .rectangle::after {
   content: '';
@@ -90,13 +99,13 @@ body {
     opacity var(--transition-duration) cubic-bezier(.08,.5,.44,.96) ;
 }
 
-.main-btn-link:hover + .rectangle::before {
+.rectangle.hovered::before {
   transform: scale(1.1);
   opacity: 0.6;
   transition-delay: 0s;
 }
 
-.main-btn-link:hover + .rectangle::after {
+.rectangle.hovered::after {
   transform: scale(1.2);
   opacity: .3;
 }

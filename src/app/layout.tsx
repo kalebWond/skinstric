@@ -5,7 +5,8 @@ import Nav from "./components/Nav";
 
 export const metadata: Metadata = {
   title: "Skinstric | Sophisticated Skincare",
-  description: "AI powered skincare tool where you can get recommendations for your face",
+  description:
+    "AI powered skincare tool where you can get recommendations for your face",
 };
 
 export default function RootLayout({
@@ -18,7 +19,7 @@ export default function RootLayout({
       <body className={`${Roobert.className} antialiased`}>
           <Nav />
           {children}
-        <div id="modal-root" />
+          <div id="modal-root" />
       </body>
     </html>
   );
