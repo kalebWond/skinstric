@@ -45,7 +45,7 @@ export default function Gallery({disabled}: {disabled: boolean}) {
 
   return (
     <>
-    <div className={clsx("relative p-5 group transition-opacity duration-300", {
+    <div className={clsx("relative p-5 group transition-opacity duration-300 scale-[0.8] md:scale-100", {
       "opacity-40 pointer-events-none": disabled
     })}>
       <label aria-disabled htmlFor="file-gallery" className="flex justify-center">

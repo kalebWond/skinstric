@@ -7,7 +7,7 @@ import PictureInstruction from "./PictureInstruction";
 export default function CameraSetup() {
   return (
     <div
-      className="h-full flex flex-col justify-center items-center">
+      className="h-full flex flex-col justify-center items-center overflow-hidden">
       <motion.div
         initial={{opacity: 0, x: -80}}
         animate={{opacity: 1, x: 0}}

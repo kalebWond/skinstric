@@ -85,7 +85,7 @@ export default function TestingForm() {
             onChange={(e) =>
               setName(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))
             }
-            className="w-[460px] text-foreground text-6xl text-center tracking-tighter border-b border-foreground outline-none"
+            className="w-3/4 text-4xl md:w-[460px] md:max-w-full text-foreground md:text-6xl text-center tracking-tighter border-b border-foreground outline-none"
             placeholder="Introduce Yourself"
             autoFocus
           />
@@ -107,7 +107,7 @@ export default function TestingForm() {
                 e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
               )
             }
-            className="w-[520px] text-foreground text-6xl text-center tracking-tighter border-b border-foreground outline-none"
+            className="w-3/4 text-4xl md:max-w-full md:text-6xl md:w-[520px] text-foreground text-center tracking-tighter border-b border-foreground outline-none"
             placeholder="Where are you from?"
             autoFocus
           />
@@ -133,7 +133,7 @@ export default function TestingForm() {
       <DottedRectangle width={610} opacity={.5} className="an-rotate-mid" />
       <DottedRectangle width={670} opacity={.2} className="an-rotate-slow" /> */}
       <svg
-        className="absolute -z-1 top-2/3 left-1/2 -translate-1/2 w-[600px] h-[600px] rotate-45 an-rotate-fast"
+        className="absolute -z-1 top-2/3 left-1/2 -translate-1/2 w-[450px] h-[450px] md:w-[600px] md:h-[600px] rotate-45 an-rotate-fast"
         viewBox="0 0 604 604"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +148,7 @@ export default function TestingForm() {
         />
       </svg>
       <svg
-        className="absolute -z-1 top-2/3 left-1/2 -translate-1/2 w-[680px] h-[680px] rotate-45 opacity-60 an-rotate-mid"
+        className="absolute -z-1 top-2/3 left-1/2 -translate-1/2 w-[530] h-[530] md:w-[680px] md:h-[680px] rotate-45 opacity-60 an-rotate-mid"
         viewBox="0 0 604 604"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +163,7 @@ export default function TestingForm() {
         />
       </svg>
       <svg
-        className="absolute -z-1 top-2/3 left-1/2 -translate-1/2 w-[760px] h-[760px] rotate-45 opacity-30 an-rotate-slow"
+        className="absolute -z-1 top-2/3 left-1/2 -translate-1/2 w-[580px] h-[580px] md:w-[760px] md:h-[760px] rotate-45 opacity-30 an-rotate-slow"
         viewBox="0 0 604 604"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

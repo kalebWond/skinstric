@@ -14,7 +14,7 @@ export default function Page() {
         <h2 className="text-base font-semibold uppercase">
           A. I. Analysis
         </h2>
-        <h1 className="text-6xl my-2 leading-12 -ml-1.5 tracking-tighter uppercase">
+        <h1 className="text-4xl lg:text-6xl my-2 leading-12 tracking-tighter uppercase">
           Demographics
         </h1>
         <p className="text-sm leading-5 uppercase">

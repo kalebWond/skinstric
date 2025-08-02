@@ -17,7 +17,7 @@ export default function TestingImageUpload() {
   }
 
   return (
-    <div className="w-full flex justify-around">
+    <div className="w-full flex justify-around flex-col items-center md:flex-row gap-y-24">
       <motion.div
         initial={{opacity: 0, x: -100}}
         animate={{opacity: 1, x: 0}}

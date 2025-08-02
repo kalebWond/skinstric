@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import CameraSetup from "@/app/components/CameraSetup";
 import PictureInstruction from "@/app/components/PictureInstruction";
 import { API_PHASE_TWO, STORAGE_KEY_DEMOGRAPHIC } from "@/app/utils";
+import clsx from "clsx";
 
 export default function Page() {
   const router = useRouter();
@@ -37,6 +38,9 @@ export default function Page() {
     return () => {
       if (stream) {
         stream.getTracks().forEach((track) => track.stop());
+      }
+      if(videoRef.current) {
+        videoRef.current.srcObject = null;
       }
     };
   }, []);
@@ -168,7 +172,9 @@ export default function Page() {
             </div>
           ) }
 
-          <PictureInstruction className="absolute bottom-8 left-1/2 -translate-x-1/2 text-background" strokeColor="#FCFCFC" />
+          <PictureInstruction className={clsx("absolute bottom-8 left-1/2 -translate-x-1/2 text-background md:flex", {
+            "hidden": capturedImage
+          })} strokeColor="#FCFCFC" />
         </div>
       )}
     </section>

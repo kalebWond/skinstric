@@ -9,7 +9,7 @@ type Tprops = {
 
 export default function Camera({isModalOpen, toggleModal, onAllowClicked}: Tprops) {
     return (
-        <div className="relative ">
+        <div className="relative scale-[0.8] md:scale-100">
             <div className="group p-5 relative">
                 <svg onClick={toggleModal} className="group-hover:scale-80 group-hover:rotate-30 transition duration-500 cursor-pointer" width="136" height="136" viewBox="0 0 136 136" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="67.9996" cy="67.9997" r="57.7857" stroke="#1A1B1C"/>
@@ -48,7 +48,7 @@ export default function Camera({isModalOpen, toggleModal, onAllowClicked}: Tprop
                     animate={{ clipPath: 'inset(0%)' }}
                     exit={{ clipPath: 'inset(50% 0% 50% 0%)'  }}
                     transition={{ ease: 'easeInOut', duration: 0.2}}
-                    className="absolute top-0 left-full translate-y-1/2 bg-foreground text-background text-sm font-semibold transition-opacity duration-300"
+                    className="absolute md:top-0 top-1/2 -left-1/4 md:left-full translate-y-1/2 bg-foreground text-background text-sm font-semibold transition-opacity duration-300"
                     >
                         <p className="px-4 pt-3.5 mb-16 uppercase text-nowrap">Allow A.I. to access your camera</p>
                         <div className="flex justify-end gap-4 border-t">

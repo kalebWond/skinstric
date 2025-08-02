@@ -5,6 +5,8 @@ import MainButton from "./ui/MainButton";
 import { motion } from 'motion/react'
 import { useState } from "react";
 import clsx from "clsx";
+import LandingMobile from "./components/LandingMobile";
+import DottedRectangle from "./ui/DottedRectangle";
 
 export default function Home() {
   const [hovered, setHovered] = useState<''| 'left' | 'right'>('');
@@ -21,7 +23,7 @@ export default function Home() {
           initial={{y: 150}}
           animate={{y:0}}
           transition={{ ease:'easeInOut', duration: 0.6}}
-          className="text-7xl font-normal tracking-[-0.08em] text-center">
+          className="text-6xl lg:text-7xl font-normal tracking-[-0.06em] md:tracking-[-0.07em] lg:tracking-[-0.08em] text-center">
           Sophisticated
           <motion.span 
             animate={{x: hovered === 'left' ? "20%" : (hovered === 'right' ? '-20%' : 0)}}
@@ -29,11 +31,21 @@ export default function Home() {
             className="block">skincare</motion.span>
         </motion.h1>
       </motion.div>
+
+
+      <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.6}}>
+        <DottedRectangle width={340} opacity={100} className="lg:hidden top-[45%]" />
+      </motion.div>
+      <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 0.6, delay: 0.3}}>
+        <DottedRectangle width={420} opacity={100} className="lg:hidden top-[45%]" />
+      </motion.div>
       
       <div className="">
         <motion.div
           animate={{opacity: hovered === 'right' ? 0 : 1}}
-          transition={{ ease: "easeInOut", duration: 0.2, delay: hovered === '' ? 0.4 : 0.2 }} >
+          transition={{ ease: "easeInOut", duration: 0.2, delay: hovered === '' ? 0.4 : 0.2 }}
+          className="hidden lg:block"
+          >
           <Link onMouseEnter={() => setHovered("left")} onMouseLeave={() => setHovered("")} href="/" className="main-btn-link">
             <MainButton id="discover-btn" title="DISCOVER A.I." className="left-8 translate-x-1/5 xl:translate-x-1/12"/>
           </Link>
@@ -42,12 +54,13 @@ export default function Home() {
           initial={{opacity: 0.5, x: '-100%', y: '100%'}} 
           animate={{opacity: 1, x: hovered === 'right' ? '-100%' : 0, y: hovered === "right" ? '100%' : 0}} 
           transition={{ ease: "easeInOut", duration: 0.6}} 
-          className={clsx("rectangle left-[-15%]", {'hovered': hovered === 'left'})} />
+          className={clsx("rectangle hidden lg:block left-[-15%]", {'hovered': hovered === 'left'})} />
       </div>
       <div className="">
         <motion.div 
           animate={{opacity: hovered === 'left' ? 0 : 1}}
           transition={{ ease: "easeInOut", duration: 0.2, delay: hovered === '' ? 0.4 : 0.2 }} 
+          className="hidden lg:block"
         >
           <Link onMouseEnter={() => setHovered("right")} onMouseLeave={() => setHovered("")} href="/testing" className="main-btn-link">
             <MainButton id="take-test-btn" title="TAKE TEST" right className="right-8 -translate-x-1/5 xl:-translate-x-1/12" />
@@ -57,8 +70,9 @@ export default function Home() {
           initial={{opacity: 0.5, x: '100%', y: '-100%'}} 
           animate={{opacity: 1, x: hovered === 'left' ? '100%' : 0, y: hovered === "left" ? '-100%' : 0}} 
           transition={{ ease: "easeInOut", duration: 0.6}} 
-          className={clsx("rectangle right-[-15%]", {'hovered': hovered === 'right'})} />
+          className={clsx("rectangle hidden lg:block right-[-15%]", {'hovered': hovered === 'right'})} />
       </div>
+      <LandingMobile />
       
       <div className="hidden lg:block fixed bottom-5 left-8 font-normal text-sm text-[#1A1B1C] space-y-3 uppercase overflow-hidden">
         <motion.p 

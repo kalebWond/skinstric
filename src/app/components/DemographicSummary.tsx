@@ -44,8 +44,8 @@ export default function DemographicSummary() {
   }
 
   return (
-    <div className="grid grid-cols-[1.5fr_6fr_2.5fr] gap-4 my-10 pb-9">
-      <div className="flex flex-col gap-2 uppercase">
+    <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_6fr_2.5fr] gap-6 lg:gap-4 my-10 pb-9">
+      <div className="flex lg:flex-col gap-3 lg:gap-2 uppercase">
         { !predictions && Array(3).fill(1).map((_,i) => (
           <div key={i} className="w-44 h-24 bg-pale animate-pulse"></div>
         )) }
@@ -69,7 +69,7 @@ export default function DemographicSummary() {
               }} 
               key={category}
               onClick={() => onCategorySelect(category)}
-              className={clsx("px-4 py-3 text-sm font-semibold tracking-tight border-t border-foreground cursor-pointer", {
+              className={clsx("flex-1 lg:flex-0 px-4 py-3 text-sm font-semibold tracking-tight border-t border-foreground cursor-pointer", {
                 "text-background bg-foreground": selectedCategory === category,
                 "bg-pale hover:bg-grayish": selectedCategory !== category,
               })}
